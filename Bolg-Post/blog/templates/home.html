@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load social_share %}
+
+<script src="https://kit.fontawesome.com/eb5100ca45.js" crossorigin="anonymous"></script>
+
+{% block content %}
+	{% for post in posts %}
+		<div class="post_entry">
+			<h2 class="post_title">
+				<a href="{% url 'post-detail' post.pk %}">{{post.title}}</a>
+			</h2>
+			<p class="post_content">{{post.body}}</p>
+			<script src="https://kit.fontawesome.com/eb5100ca45.js" crossorigin="anonymous"></script>
+
+<br>
+  
+ <span style="font-size:15px;float:left;margin-left:10px;"class="fa-2x nav-item"> {% post_to_linkedin object_or_url %}</span>
+
+  <span style="color:#0088cc; float:left;margin-left:10px;" class="nav-item"> {% post_to_telegram "New Post: {{detail.title}}" object_or_url '<i class="fa-brands fa-instagram fa-2x"></i>' %}</span>
+
+ <span style="float:left;margin-left:10px;" class="nav-item">{% post_to_facebook object_or_url '<i class="fab fa-facebook fa-2x"></i>' %}</span>
+
+ <span style="float:left;margin-left:10px;" class="nav-item"> {% post_to_twitter "New Post: {{detail.title}}. Check it out!" object_or_url '<i class="fa-brands fa-twitter fa-2x"></i>' %}</span>
+<span style="float:left;margin-left:10px;" class="nav-item"> {% post_to_telegram "New Post: {{detail.title}}. Check it out!" object_or_url '<i class="fa-brands fa-telegram fa-2x"></i>' %}</span>
+
+<span style="float:left;margin-left:10px;" class="nav-item"> {% post_to_reddit "New Post: {{detail.title}}. Check it out!" object_or_url '<i class="fa-brands fa-reddit fa-2x"></i>' %}</span>
+
+ <span style="float:left;margin-left:10px;" class="nav-item">{% post_to_whatsapp object_or_url '<i class="fa-brands fa-whatsapp fa-2x"></i>' %}</span>
+
+ <span style="float:left;margin-left:10px;" class="nav-item">{% post_to_gplus object_or_url '<i class="fa fa-google-plus-official fa-2x" aria-hidden="true"></i>' %}</span>
+
+ <br><br><br>
+		</div>
+	{%endfor%}
+{% endblock %}
